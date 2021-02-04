@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import {Provider, connect} from 'react-redux';
 import './App.css';
+import { store } from './config/store';
+import counterActions from './actions/counter';
+
+const CounterComponent = ({counter, incrementarContador, decrementarContador}) => (
+<header className="App-header">
+  <div>{counter.count}</div>
+  <button onClick={incrementarContador}>Incrementar</button>
+  <button onClick={decrementarContador}>Decrementar</button>
+</header>
+);
+
+const mapStateToProps = ({ counter }) => ({
+  counter,
+});
+
+const mapDispatchToProps = () => ({
+  ...counterActions,
+})
+
+const ConnectedCounterComponent = connect(mapStateToProps, mapDispatchToProps())(CounterComponent);
+
+
+
 
 function App() {
   return (
+    <Provider store={store}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ConnectedCounterComponent/>
     </div>
+    </Provider>
   );
 }
 
