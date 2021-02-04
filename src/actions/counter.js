@@ -6,7 +6,7 @@ export const incrementarContador = () => async(dispatch) => {
     });
 };
 
-export const decrementarContador = ()=> async(dispatch) => {
+export const decrementarContador = () => async(dispatch) => {
     dispatch({
         type: CounterTypes.DECREMENTAR,
     });
