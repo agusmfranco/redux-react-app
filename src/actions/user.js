@@ -19,7 +19,7 @@ export const login = (username, password) => async(dispatch) => {
     } else{
         dispatch({
             type: UserTypes.SET_USER,
-            payload: loading
+            payload: user
         });
     }
     
