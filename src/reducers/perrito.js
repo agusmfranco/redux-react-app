@@ -1,0 +1,26 @@
+import {perrito as perritoActions} from '../constants/actionTypes';
+
+
+const INITIAL_STATE = {
+    loading: false,
+    list: [],
+    selected_perrito: null
+
+}
+
+export default (state = INITIAL_STATE, action) => {
+    switch(action.type){
+        case perritoActions.LOADING: {
+            return { ...state, loading: action.payload}
+        }
+        case perritoActions.SET_SELECTED_PERRITO: {
+            return { ...state, selected_perrito: action.payload}
+        }
+        case perritoActions.SET_LIST: {
+            return { ...state, list: action.payload}
+        }
+        default: 
+            return state;
+        
+    }
+}

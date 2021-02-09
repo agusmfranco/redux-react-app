@@ -1,12 +1,12 @@
 import React from 'react';
-import {Navbar, Nav, Card, Button} from 'react-bootstrap';
-import './home.css';
+import {Card, Button} from 'react-bootstrap';
+import {withRouter} from 'react-router-dom';
 import {getDogs} from '../../mockRequests/perritos';
 import NavigationBar from '../../components/Navigation/index';
 
 
 
-export const Home = ()=> (
+export const Home = ({history})=> (
     <div className="container-fluid">
         <NavigationBar />
         <h3 className="m-4">Adopta el cachorro que siempre has querido</h3>
@@ -22,7 +22,7 @@ export const Home = ()=> (
                         <div>{`Genero: ${dog.genero}`}</div>
                         <div>{`Edad: ${dog.edad}`}</div>
                       </Card.Text>
-                      <Button variant="success">Adoptar!</Button>
+                      <Button onClick={()=> history.push('/felicidades')} variant="success">Adoptar!</Button>
                     </Card.Body>
                   </Card>
                   </div>
@@ -32,4 +32,4 @@ export const Home = ()=> (
     </div>
 )
 
-export default Home;
+export default withRouter(Home);
